@@ -1,0 +1,43 @@
+<button type="button" class="btn btn-success" style="margin-left: 20px;" (click)="grid()">{{mode=='grid' ? 'grid' :'List'}}</button><br><br>
+<button type="button" class="btn btn-primary" style="margin-left: 20px;" (click)="gridMode()">Grid</button><br><br>
+<button type="button" class="btn btn-primary" style="margin-left: 20px;" (click)="listMode()">List</button><br><br>
+<input type="text" [(ngModel)]="searchValue">
+<button type="button" class="btn btn-primary" style="margin-left: 20px;" (click)="search()">Search</button><br><br>
+<button type="button" class="btn btn-primary" style="margin-left: 20px;" (click)="Cancel()">Cancel</button><br><br>
+<button type="button" class="btn btn-primary" (click)="gridlist()">{{mode=='list' ?'list' :'grid'}}</button>
+
+
+<br><br>
+<table border="2px" cellpadding="20" class="ml-5"  *ngIf="mode=='grid'" >
+    <thead>
+        <th>Id</th>
+
+        <th>Name</th>
+        <th>Quantity</th>
+        <th>ImagePath</th>
+    </thead>
+    <tr *ngFor="let items of gridList">
+        <td>{{items.id}}</td>
+        <td>{{items.name}}</td>
+        <td>{{items.quantity}}</td>
+
+        <td><img [src]="items.imagePath" width="100px"></td>
+
+    </tr>
+</table>
+<br>
+<br>
+<div class="container"  *ngIf="mode=='list'">
+    <div class="row" id="filter-items">
+        <div class="mx-auto items">
+    <div class="card" style="width: 18rem; margin-left: 20px;" *ngFor="let items of gridList">
+        <img class="card-img-top" [src]="items.imagePath">
+        <div class="card-body">
+          <h5 class="card-title">{{items.name}}</h5>
+          <p class="card-text">{{items.quantity}}</p>
+          <a href="#" class="btn btn-primary">Submit</a>
+        </div>
+      </div>
+</div>
+</div>
+</div>
